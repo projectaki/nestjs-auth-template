@@ -1,9 +1,9 @@
 export const testConfig = () => ({
-  test: {
-    value: process.env.VALUE,
-  } as Config,
+  database: {
+    connectionString: process.env.DB_CONNECTION_STRING,
+  } as DatabaseConfig,
 });
 
-export interface Config {
-  value: string;
+export interface DatabaseConfig {
+  connectionString: string;
 }

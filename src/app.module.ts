@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { testConfig } from './config/configuration';
 
@@ -8,6 +9,13 @@ import { testConfig } from './config/configuration';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [testConfig],
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (config: ConfigService) => ({
+        uri: config.get<string>('DB_CONNECTION_STRING'),
+      }),
+      inject: [ConfigService],
     }),
   ],
   controllers: [AppController],
