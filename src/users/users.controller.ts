@@ -3,10 +3,11 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { LoggerService } from 'src/core/logger/logger.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService, private logger: LoggerService) {}
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -20,6 +21,7 @@ export class UsersController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<User> {
+    throw new Error('Internal Server error');
     return await this.usersService.findOne(id);
   }
 
