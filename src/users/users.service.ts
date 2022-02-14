@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { from } from 'rxjs';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './entities/user.entity';
@@ -30,8 +29,21 @@ export class UsersService {
     return res;
   }
 
+  async findOneByEmail(email: string, projections: string[] = []) {
+    const res = await this.userModel.findOne({ email }, projections).exec();
+    return res;
+  }
+
   async remove(_id: string) {
     const res = await this.userModel.findOneAndDelete({ _id }).exec();
     return res;
+  }
+
+  async getUserRoles() {
+    return [];
+  }
+
+  async getUserPermissions() {
+    return [];
   }
 }
