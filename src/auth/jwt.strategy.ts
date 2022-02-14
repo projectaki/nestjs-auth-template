@@ -5,7 +5,6 @@ import { passportJwtSecret } from 'jwks-rsa';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { AuthConfig } from 'src/config/configuration';
 import { UsersService } from 'src/users/users.service';
-import { Permission } from './permissions.enum';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {

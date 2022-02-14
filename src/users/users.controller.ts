@@ -17,8 +17,8 @@ export class UsersController {
     return await this.usersService.create(createUserDto);
   }
 
-  @Public()
   @Get()
+  @Public()
   async findAll(): Promise<User[]> {
     return await this.usersService.findAll();
   }
