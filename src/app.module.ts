@@ -3,15 +3,17 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
-import { testConfig } from './config/configuration';
-import { AllExceptionsFilter } from './core/exceptions/all-exceptions-filter';
-import { LoggerModule } from './core/logger/logger.module';
+import { config } from './config/configuration';
+import { AllExceptionsFilter } from './exceptions/all-exceptions-filter';
+import { LoggerModule } from './logger/logger.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [testConfig],
+      load: [config],
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -21,6 +23,8 @@ import { LoggerModule } from './core/logger/logger.module';
       inject: [ConfigService],
     }),
     LoggerModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
