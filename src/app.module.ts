@@ -6,7 +6,6 @@ import { AppController } from './app.controller';
 import { testConfig } from './config/configuration';
 import { AllExceptionsFilter } from './core/exceptions/all-exceptions-filter';
 import { LoggerModule } from './core/logger/logger.module';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,7 +20,6 @@ import { UsersModule } from './users/users.module';
       }),
       inject: [ConfigService],
     }),
-    UsersModule,
     LoggerModule,
   ],
   controllers: [AppController],

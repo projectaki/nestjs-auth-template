@@ -21,7 +21,6 @@ export class UsersController {
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<User> {
-    throw new Error('Internal Server error');
     return await this.usersService.findOne(id);
   }
 
