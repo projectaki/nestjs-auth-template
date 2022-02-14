@@ -5,9 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { config } from './config/configuration';
 import { AllExceptionsFilter } from './exceptions/all-exceptions-filter';
-import { LoggerModule } from './logger/logger.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { LoggerModule } from './logger/logger.module';
+import { ExceptionsModule } from './exceptions/exceptions.module';
 
 @Module({
   imports: [
@@ -25,13 +26,9 @@ import { UsersModule } from './users/users.module';
     LoggerModule,
     AuthModule,
     UsersModule,
+    ExceptionsModule,
   ],
   controllers: [AppController],
-  providers: [
-    {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
-  ],
+  providers: [],
 })
 export class AppModule {}
