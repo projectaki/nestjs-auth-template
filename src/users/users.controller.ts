@@ -3,7 +3,8 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { LoggerService } from 'src/core/logger/logger.service';
+import { LoggerService } from 'src/logger/logger.service';
+import { Public } from 'src/auth/public.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -14,6 +15,7 @@ export class UsersController {
     return await this.usersService.create(createUserDto);
   }
 
+  @Public()
   @Get()
   async findAll(): Promise<User[]> {
     return await this.usersService.findAll();
