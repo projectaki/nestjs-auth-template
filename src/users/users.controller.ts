@@ -6,6 +6,7 @@ import { User } from './entities/user.entity';
 import { Public } from 'src/auth/public.decorator';
 import { Permissions } from 'src/auth/permissions.decorator';
 import { Permission } from 'src/auth/permissions.enum';
+import { Authorize } from 'src/auth/resource.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -26,7 +27,8 @@ export class UsersController {
   @Get(':id')
   @Permissions(Permission.USER_READ)
   async findOne(@Param('id') id: string): Promise<User> {
-    return await this.usersService.findOne(id);
+    const resource = await this.usersService.findOne(id);
+    return resource;
   }
 
   @Patch(':id')
