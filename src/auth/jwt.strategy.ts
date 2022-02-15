@@ -5,6 +5,7 @@ import { passportJwtSecret } from 'jwks-rsa';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { AuthConfig } from 'src/config/configuration';
 import { UsersService } from 'src/users/users.service';
+import { Permission } from './permissions.enum';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -37,6 +38,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   private async claimsTransform(payload: any) {
     if (this.isClientCredentials(payload)) {
+      payload.permissions = [Permission.USER_READ];
+      payload.sub = '1';
       return payload;
     }
 
