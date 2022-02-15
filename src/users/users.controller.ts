@@ -3,12 +3,12 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { Public } from 'src/auth/decorators/public.decorator';
-import { Permissions } from 'src/auth/decorators/permissions.decorator';
-import { Permission } from 'src/auth/permissions.enum';
-import { AuthService } from 'src/auth/auth.service';
+import { Public } from './../auth/decorators/public.decorator';
+import { Permissions } from './../auth/decorators/permissions.decorator';
+import { Permission } from './../auth/permissions.enum';
+import { AuthService } from './../auth/auth.service';
 import { User as CurrentUser } from './../auth/decorators/user.decorator';
-import { Policy } from 'src/auth/policy.enum';
+import { Policy } from './../auth/policy.enum';
 
 @Controller('users')
 export class UsersController {
