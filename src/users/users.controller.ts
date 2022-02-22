@@ -31,7 +31,7 @@ export class UsersController {
   async findOne(@Param('id') id: string, @CurrentUser() user): Promise<User> {
     const resource = await this.usersService.findOne(id);
 
-    this.authService.authorize(user, resource, Policy.RESOURCE_ID_MATCH);
+    this.authService.authorize<User>(user, resource, Policy.RESOURCE_ID_MATCH);
 
     return resource;
   }

@@ -24,7 +24,7 @@ export class UsersService {
     return res;
   }
 
-  async findOne(_id: string, projections: string[] = []) {
+  async findOne(_id: string, projections: string[] = []): Promise<User> {
     const res = await this.userModel.findById(_id, projections).exec();
     return res;
   }
