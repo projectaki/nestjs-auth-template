@@ -1,3 +1,3 @@
-# WEZL SERVER
+# Angular Concepts
 
-Angular concept testing
+Authentication and Authorization with policies in Angular
