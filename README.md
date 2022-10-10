@@ -1,3 +1,5 @@
-# Angular Concepts
+# NestJs REST API template set up with authorization
 
-Authentication and Authorization with policies in Angular
+1. Role based auth
+1. Permission based auth
+1. Resource based auth
